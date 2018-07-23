@@ -63,8 +63,6 @@ const reverseStr = word => {
 
 // console.log(reverseStr('hello'));
 
-
-
 //TRIANGULAR NUMBER___________________________
 
 const triNum = (num, total = 0) => {
@@ -92,27 +90,21 @@ const triNum2 = num => {
 
 // console.log(triNum2(3));
 
-
-
 //STRING SPLITTER______________________________
 
 const splitStr = (string, separator) => {
     const separatorIndex = string.indexOf(separator);
 
-    if(!string.length) return [];
-    if(separatorIndex === -1) return [string];
+    if (!string.length) return [];
+    if (separatorIndex === -1) return [string];
 
     return [
         string.slice(0, separatorIndex),
         ...splitStr(string.slice(separatorIndex + 1), separator)
     ];
-
-
 };
 
 // console.log(splitStr('here is my super fancy string!', ' '));
-
-
 
 //BINARY REPRESENTATION____________________________
 
@@ -121,15 +113,24 @@ const showBinaryEquivalent = num => {
 
     //base case:
     //num = undefined
-    if(!num) return '';
+    if (!num) return '';
 
     //general case:
     //num % 2, store remainder
     //Math.floor(num) / 2, store value
     //call showBinaryEquivalent(value) + remainder
-    return showBinaryEquivalent(Math.floor(num/2)) + (num % 2);
-}
+    return showBinaryEquivalent(Math.floor(num / 2)) + (num % 2);
+};
 
 // '11001'
 
-console.log(showBinaryEquivalent(25));
+// console.log(showBinaryEquivalent(25));
+
+const factorial = num => {
+    // base case
+    if (num <= 0) return 1; // must be 1 for multiplying by num when coming back up the call stack
+
+    return num * factorial(num - 1);
+};
+
+console.log(factorial(5));
