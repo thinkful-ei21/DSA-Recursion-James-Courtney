@@ -61,7 +61,11 @@ const reverseStr = word => {
     // return newArr + reverseStr(word.slice(0, -1));
 };
 
-console.log(reverseStr('hello'));
+// console.log(reverseStr('hello'));
+
+
+
+//TRIANGULAR NUMBER___________________________
 
 const triNum = (num, total = 0) => {
     if (num === 0) return total;
@@ -72,11 +76,60 @@ const triNum = (num, total = 0) => {
 // console.log(triNum(6));
 
 // second solution
+// const triNum2 = num => {
+//     let total = 0;
+//     if (num === 0) return total;
+//     total += num;
+//     return num + triNum(num - 1);
+// };
+
+//optimized
 const triNum2 = num => {
-    let total = 0;
-    if (num === 0) return total;
-    total += num;
+    if (num === 0) return;
+
     return num + triNum(num - 1);
 };
 
-// console.log(triNum2(6));
+// console.log(triNum2(3));
+
+
+
+//STRING SPLITTER______________________________
+
+const splitStr = (string, separator) => {
+    const separatorIndex = string.indexOf(separator);
+
+    if(!string.length) return [];
+    if(separatorIndex === -1) return [string];
+
+    return [
+        string.slice(0, separatorIndex),
+        ...splitStr(string.slice(separatorIndex + 1), separator)
+    ];
+
+
+};
+
+// console.log(splitStr('here is my super fancy string!', ' '));
+
+
+
+//BINARY REPRESENTATION____________________________
+
+const showBinaryEquivalent = num => {
+    // let remainder = num % 2;
+
+    //base case:
+    //num = undefined
+    if(!num) return '';
+
+    //general case:
+    //num % 2, store remainder
+    //Math.floor(num) / 2, store value
+    //call showBinaryEquivalent(value) + remainder
+    return showBinaryEquivalent(Math.floor(num/2)) + (num % 2);
+}
+
+// '11001'
+
+console.log(showBinaryEquivalent(25));
