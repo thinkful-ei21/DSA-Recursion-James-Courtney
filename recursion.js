@@ -15,11 +15,9 @@ function countSheep(num) {
 // countSheep(-3); // doesn't return anything
 // countSheep(3);
 
-
-
 //ARRAY DOUBLE_____________________________
 
-function arrayDouble(arr, doubledArr=[]) {
+function arrayDouble(arr, doubledArr = []) {
     // base case:
     // array.length = 0
     if (!arr.length) return doubledArr;
@@ -47,22 +45,38 @@ function arrayDouble2(arr) {
 
 // console.log(arrayDouble2([1,2,3,4]));
 
-
-
 //REVERSE STRING______________________________
 
-    const reverseStr = word => {
-        if (word === '') return '';
+const reverseStr = word => {
+    if (word === '') return '';
 
-        // newArr = ...first letter
-        // newArr = ...first letter, old first letter
-        // newArr = ...first letter, (old first letter + old first letter)
+    // newArr = ...first letter
+    // newArr = ...first letter, old first letter
+    // newArr = ...first letter, (old first letter + old first letter)
 
-        const newArr = word[0];
-        return reverseStr(word.slice(1)) + newArr;
+    const newArr = word[0];
+    return reverseStr(word.slice(1)) + newArr;
 
-        // const newArr = word[word.length -1];
-        // return newArr + reverseStr(word.slice(0, -1));
-    }
+    // const newArr = word[word.length -1];
+    // return newArr + reverseStr(word.slice(0, -1));
+};
 
 console.log(reverseStr('hello'));
+
+const triNum = (num, total = 0) => {
+    if (num === 0) return total;
+
+    return triNum(num - 1, (total += num));
+};
+
+// console.log(triNum(6));
+
+// second solution
+const triNum2 = num => {
+    let total = 0;
+    if (num === 0) return total;
+    total += num;
+    return num + triNum(num - 1);
+};
+
+// console.log(triNum2(6));
